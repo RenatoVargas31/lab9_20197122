@@ -1,5 +1,6 @@
 package com.example.lab9_20197122.servlets;
 
+import com.example.lab9_20197122.beans.Curso;
 import com.example.lab9_20197122.beans.Usuario;
 import com.example.lab9_20197122.daos.DecanoDao;
 import com.example.lab9_20197122.daos.DocenteDao;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "MainServlet", value = "/principal")
 public class MainServlet extends HttpServlet {
@@ -30,9 +32,16 @@ public class MainServlet extends HttpServlet {
         switch (action){
             case "index":
                 if(usuario.getRol().getIdRol() == 1){
+
+                    ArrayList<Curso> listaCursos = decanoDao.obtenerListaCursos(usuario.getIdUsuario());
+
+                    request.setAttribute("listaCursos", listaCursos);
                     view = request.getRequestDispatcher("lista-cursos.jsp");
                     view.forward(request, response);
                 } else if(usuario.getRol().getIdRol() == 2){
+
+
+
                     view = request.getRequestDispatcher("lista-evaluaciones.jsp");
                     view.forward(request, response);
                 }
