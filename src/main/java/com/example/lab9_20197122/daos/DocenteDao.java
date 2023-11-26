@@ -1,5 +1,6 @@
 package com.example.lab9_20197122.daos;
 
+import com.example.lab9_20197122.beans.Curso;
 import com.example.lab9_20197122.beans.Evaluaciones;
 
 import java.sql.Connection;
@@ -29,6 +30,11 @@ public class DocenteDao extends BaseDao{
                     evaluaciones.setNota(rs.getInt(5));
                     evaluaciones.setFecha_registro(rs.getTimestamp(7));
                     evaluaciones.setFecha_edicion(rs.getTimestamp(8));
+
+                    Curso curso = new Curso();
+                    curso.setIdCurso(rs.getInt(6));
+                    evaluaciones.setCurso(curso);
+                    
 
                     listaEvaluaciones.add(evaluaciones);
                 }
