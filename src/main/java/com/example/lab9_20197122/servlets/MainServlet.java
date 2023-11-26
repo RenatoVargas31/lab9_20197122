@@ -1,6 +1,7 @@
 package com.example.lab9_20197122.servlets;
 
 import com.example.lab9_20197122.beans.Curso;
+import com.example.lab9_20197122.beans.Evaluaciones;
 import com.example.lab9_20197122.beans.Usuario;
 import com.example.lab9_20197122.daos.DecanoDao;
 import com.example.lab9_20197122.daos.DocenteDao;
@@ -40,8 +41,9 @@ public class MainServlet extends HttpServlet {
                     view.forward(request, response);
                 } else if(usuario.getRol().getIdRol() == 2){
 
+                    ArrayList<Evaluaciones> listaEvaluaciones = docenteDao.obtenerListaEvaluaciones(usuario.getIdUsuario());
 
-
+                    request.setAttribute("listaEvaluaciones", listaEvaluaciones);
                     view = request.getRequestDispatcher("lista-evaluaciones.jsp");
                     view.forward(request, response);
                 }
