@@ -1,4 +1,15 @@
 package com.example.lab9_20197122.daos;
 
-public class DecanoDao {
+import com.example.lab9_20197122.beans.Usuario;
+
+import java.util.ArrayList;
+
+public class DecanoDao extends BaseDao{
+
+    public ArrayList<Usuario> obtenerListaCursos(int idDecano){
+
+
+
+    }
+
 }

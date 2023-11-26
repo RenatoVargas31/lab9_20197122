@@ -23,7 +23,7 @@ public class Filter implements jakarta.servlet.Filter {
 
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioSesion");
         if(usuario == null){
-            response.sendRedirect(request.getContextPath()+"/login");
+            response.sendRedirect(request.getContextPath());
         }else{
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
             response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
